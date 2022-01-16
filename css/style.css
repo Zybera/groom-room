@@ -40,6 +40,18 @@ body {
   font-family: Roboto;
   font-weight: bold;
 }
+button {
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #6D79EB;
+  border-radius: 8px;
+  padding: 16px 92px;
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: bold;
+}
 .wrapper {
   min-height: 100%;
   overflow: hidden;
@@ -116,13 +128,15 @@ body {
   font-size: 32px;
   line-height: 37px;
 }
+.application__title.top {
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
 .application__text {
   font-size: 18px;
   line-height: 21px;
   color: #777;
   margin-top: 31px;
-}
-.application__form {
 }
 .form {
   display: flex;
@@ -187,6 +201,86 @@ body {
   line-height: 16px;
   font-weight: bold;
 }
+.application__form {
+}
+
+/* -------------FOR-APPLICATIONS------------- */
+.application__card {
+  
+}
+.application__card:not(:last-child) {
+  margin-bottom: 10px;
+}
+.card-application {
+  display: flex;
+  border: 1px solid #F2F2F2;
+  box-sizing: border-box;
+  border-radius: 12px;
+  width: 474px;
+}
+.card-application__img {
+  margin: 10px;
+}
+.card-application__img img {
+  width: 100px;
+  height: 100px;
+}
+.card-application__info {
+}
+.card-application__title {
+  font-size: 18px;
+  line-height: 21px;
+  margin-top: 10px;
+  color: #000;
+}
+.card-application__text {
+  font-size: 14px;
+  line-height: 16px;
+  color: #E25151;
+  margin: 20px 14px;
+}
+/* ------------FOR-APPLICATION------------------- */
+.application__left.block {
+  display: flex;
+  flex-direction: column;
+}
+.application__left.block button {
+  padding: 16px 83px 16px 55px;
+  width: 187px;
+}
+.application__left.block button:not(:last-child) {
+  margin-bottom: 18px;
+}
+.application__block {
+}
+.block-application {
+  display: flex;
+}
+.block-application__img {
+  margin-bottom: 18px;
+
+}
+.block-application__img img {
+  width: 187px;
+  height: 187px;
+}
+.block-application__info {
+  margin-top: 27px;
+  margin-left: 33px;
+}
+.block-application__title {
+  font-size: 32px;
+  line-height: 37px;
+
+}
+.block-application__text {
+  color: #E25151;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 62px 42px 18px 42px;
+}
+
+
 /* --------------------OUR-WORKS--------------------- */
 .our-works {
 }
