@@ -26,10 +26,15 @@
         <div class="application__container">
           <h1 class="application__title">Профессиональная укладка<br>для ваших домашних<br>питомцев</h1>
           <div class="application__form form">
-            <div class="form__title">Создайте заявку</div>
-            <input type="text" name="" class="" placeholder="Текстовое поле">
-            <input type="text" name="" class="" placeholder="Текстовое поле">
-            <button>Записаться</button>
+            <div class="form__title" id="app">Создайте заявку</div>
+            <input type="text" name="" class="" placeholder="Кличка домашнего животного" v-model="petName">
+            <select>
+              <option v-model="category">Категория заявки</option>
+              <option>Стрижка</option>
+              <option>Мытье</option>
+              <option>Педикюр</option>
+            </select>
+            <button v-on:click="add()">Записаться</button>
           </div>
         </div>
       </section>
@@ -67,6 +72,8 @@
     </main>
     <footer class="footer">groom-salon.com 2000-2999</footer>
   </div>
+  <script src="js/vue.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
