@@ -17,7 +17,7 @@
       <div class="header__logo"><span>GROOMING</span>Service for dogs and cats</div>
         <nav class="header__menu">
           <a href="/" class="header__link icon-home active"><span>ГЛАВНАЯ</span></a>
-          <a href="public/auth.php" class="header__link icon-key"><span>ВХОД</span></a>
+          <a href="auth" class="header__link icon-key"><span>ВХОД</span></a>
         </nav>
       </div>
     </header>
@@ -44,7 +44,7 @@
           <div class="our-works__gallery">
             <div class="our-works__card card" v-for="app in apps">
               <div class="card__img">
-                <img src="public/img/dog.png" alt="dog">
+                <img :src="app.img" alt="dog">
               </div>
               <div class="card__name">{{app.name}} {{app.category}} {{app.status}}</div>
             </div>

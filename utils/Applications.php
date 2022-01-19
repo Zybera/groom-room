@@ -16,7 +16,7 @@ switch($type) {
 
 function addApplication($conn, $name, $category) {
   $date = date('Y-m-d');
-  $sql = "INSERT INTO `applications` (`id`, `name`, `img-before`, `img-after`, `timestamp`, `category`, `status`) VALUES (NULL, '$name', 'img/dog.png', '1', '$date', '$category', 'new')";
+  $sql = "INSERT INTO `applications` (`id`, `name`, `img-before`, `img-after`, `timestamp`, `category`, `status`) VALUES (NULL, '$name', 'public/img/dog.png', '1', '$date', '$category', 'new')";
   if ($conn->query($sql) === TRUE) {
     $applications =  mysqli_query($conn, "SELECT * FROM `applications` where `name` = '$name'");
     $vars = [];

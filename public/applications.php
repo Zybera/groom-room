@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Groom Room</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/icons-style.css">
+  <link rel="stylesheet" href="public/css/style.css">
+  <link rel="stylesheet" href="public/css/icons-style.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
         <div class="header__logo"><span>GROOMING</span>Service for dogs and cats</div>
         <nav class="header__menu">
           <a href="/" class="header__link icon-home"><span>ГЛАВНАЯ</span></a>
-          <a href="applications.php" class="header__link icon-list active"><span>ЗАЯВКИ</span></a>
+          <a href="applications" class="header__link icon-list active"><span>ЗАЯВКИ</span></a>
           <a href="#" class="header__link icon-profile"><span>Кабинет</span></a>
         </nav>
       </div>
@@ -53,8 +53,8 @@
     </main>
     <footer class="footer">groom-salon.com 2000-2999</footer>
   </div>
-  <script src="js/vue.js"></script>
-  <script src="js/script.js"></script>
+  <script src="public/js/vue.js"></script>
+  <script src="public/js/script.js"></script>
 </body>
 
 </html>

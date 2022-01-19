@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Groom Room</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/icons-style.css">
+  <link rel="stylesheet" href="public/css/style.css">
+  <link rel="stylesheet" href="public/css/icons-style.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
         <div class="header__logo"><span>GROOMING</span>Service for dogs and cats</div>
         <nav class="header__menu">
           <a href="/" class="header__link icon-home active"><span>ГЛАВНАЯ</span></a>
-          <a href="auth.php" class="header__link icon-key"><span>ВХОД</span></a>
+          <a href="auth" class="header__link icon-key"><span>ВХОД</span></a>
         </nav>
       </div>
     </header>
@@ -29,7 +29,7 @@
             <div class="application__text">Чтобы получить возможность<br>добавить заявку</div>
           </div>
           <div class="application__form form form_img">
-            <img src="img/cat-dog.png" alt="">
+            <img src="public/img/cat-dog.png" alt="">
             <div class="form__title">
               <a href="#" class="form__link active" v-on:click="auth">Вход</a>
               <a href="#" class="form__link" v-on:click="reg">Регистрация</a>
@@ -44,8 +44,8 @@
     </main>
     <footer class="footer">groom-salon.com 2000-2999</footer>
   </div>
-  <script src="js/vue.js"></script>
-  <script src="js/script.js"></script>
+  <script src="public/js/vue.js"></script>
+  <script src="public/js/script.js"></script>
 </body>
 
 </html>
