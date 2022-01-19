@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 18 2022 г., 19:29
+-- Время создания: Янв 19 2022 г., 21:20
 -- Версия сервера: 10.5.11-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -42,8 +42,9 @@ CREATE TABLE `applications` (
 --
 
 INSERT INTO `applications` (`id`, `name`, `img-before`, `img-after`, `timestamp`, `category`, `status`) VALUES
-(1, 'зузик', 'нет', 'нет', 'сейчас', 'мыть', 'грязный'),
-(3, 'пуся', '1', '1', '2022-01-18', 'мыть', 'old');
+(1, 'зузик', 'img/dog.png', 'нет', 'сейчас', 'мыть', 'грязный'),
+(3, 'пуся', 'img/dog.png', '1', '2022-01-18', 'мыть', 'old'),
+(29, '12', 'img/dog.png', '1', '2022-01-19', 'Мытье', 'new');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`login`, `password`, `role`) VALUES
-('login', 'password', 'admin');
+('login', 'password', 'admin'),
+('qwe', 'qwe', 'guest');
 
 --
 -- Индексы сохранённых таблиц
@@ -88,7 +90,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,14 +1,25 @@
 <?
 require_once ('connect.php');
+$type = $_POST['type'];
 
-echo '<br>';
 
+switch($type) {
+  case "LOGIN_USER":
+    echo json_encode(authorization($conn, $_POST['login'], $_POST['password']));
+    break;
+  case "REGISTR_USER":
+    echo json_encode(register($conn, $_POST['login'], $_POST['password']));
+    break;
+  default:
+    echo 'eror';
+    break;
+}
 function register($conn, $login, $password) {
   $sql = "INSERT INTO `users` (`login`, `password`, `role`) VALUES ('$login', '$password', 'guest')";
   if ($conn->query($sql) === TRUE) {
-    echo "New user created successfully";
+    return "New user created successfully";
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    return 'Invalid data';
   }
 }
 
@@ -26,9 +37,9 @@ function authorization($conn, $login, $password) {
     }
   }
   if ($result === 'succses') {
-    echo 'Authorization is successful';
+    return "login and password are correct!";
   } else {
-    echo 'Invalid username or password entered';
+    return 'Invalid data';
   }
 }
 ?>

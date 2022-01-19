@@ -1,15 +1,31 @@
 <?
 require_once ('connect.php');
+$type = $_POST['type'];
 
-echo '<br>';
+switch($type) {
+  case "GET_APPLICATIONS":
+    echo json_encode(getAllApplications($conn));
+    break;
+  case "ADD_APPLICATIONS":
+    echo json_encode(addApplication($conn, $_POST['name'], $_POST['category']));
+    break;
+  default:
+    echo 'eror';
+    break;
+}
 
 function addApplication($conn, $name, $category) {
   $date = date('Y-m-d');
-  $sql = "INSERT INTO `applications` (`id`, `name`, `img-before`, `img-after`, `timestamp`, `category`, `status`) VALUES (NULL, '$name', '1', '1', '$date', '$category', 'new')";
+  $sql = "INSERT INTO `applications` (`id`, `name`, `img-before`, `img-after`, `timestamp`, `category`, `status`) VALUES (NULL, '$name', 'img/dog.png', '1', '$date', '$category', 'new')";
   if ($conn->query($sql) === TRUE) {
-    echo "New application created successfully";
+    $applications =  mysqli_query($conn, "SELECT * FROM `applications` where `name` = '$name'");
+    $vars = [];
+    while ($var = mysqli_fetch_assoc($applications)) {
+      array_push($vars, array('id' => $var['id'], 'img' => $var['img-before'],'name' => $var['name'],'category' => $var['category'],'status' => $var['status'],'timestamp' => $var['timestamp']));
+    }
+    return $vars;
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    return "Error: " . $sql . "<br>" . $conn->error;
   }
 }
 
@@ -17,14 +33,9 @@ function getAllApplications($conn) {
   $applications =  mysqli_query($conn, "SELECT * FROM `applications`");
   $vars = [];
   while ($var = mysqli_fetch_assoc($applications)) {
-    array_push($vars, [$var['id'], $var['name'], $var['img-before'], $var['img-after'], $var['timestamp'], $var['category'], $var['status']]);
+    array_push($vars, array('id' => $var['id'], 'img' => $var['img-before'],'name' => $var['name'],'category' => $var['category'],'status' => $var['status'],'timestamp' => $var['timestamp']));
   }
-  for ($i=0; $i < count($vars); $i++) {
-    for ($j=0; $j < count($vars[$i]); $j++) { 
-      echo $vars[$i][$j]. " ";
-    }
-    echo '<br>';
-  }
+  return $vars;
 }
 
 function getApplicationsById($conn, $id) {

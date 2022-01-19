@@ -16,8 +16,8 @@
       <div class="header__container">
         <div class="header__logo"><span>GROOMING</span>Service for dogs and cats</div>
         <nav class="header__menu">
-          <a href="index.html" class="header__link icon-home active"><span>ГЛАВНАЯ</span></a>
-          <a href="login.html" class="header__link icon-key"><span>ВХОД</span></a>
+          <a href="/" class="header__link icon-home active"><span>ГЛАВНАЯ</span></a>
+          <a href="auth.php" class="header__link icon-key"><span>ВХОД</span></a>
         </nav>
       </div>
     </header>
@@ -31,12 +31,13 @@
           <div class="application__form form form_img">
             <img src="img/cat-dog.png" alt="">
             <div class="form__title">
-              <a href="" class="form__link active">Вход</a>
-              <a href="" class="form__link">Регистрация</a>
+              <a href="#" class="form__link active" v-on:click="auth">Вход</a>
+              <a href="#" class="form__link" v-on:click="reg">Регистрация</a>
             </div>
             <input type="text" name="" class="" placeholder="Введите логин" v-bind:value="login" v-on:input="getLogin">
             <input type="text" name="" class="" placeholder="Введите пароль" v-bind:value="password" v-on:input="getPassword">
-            <button  v-on:click="auth">Войти</button>
+            <button class="form__btn" v-on:click="User('LOGIN_USER')">Войти</button>
+            <button class="form__btn" style="display:none;" v-on:click="User('REGISTR_USER')">Регистрация</button>
           </div>
         </div>
       </section>
