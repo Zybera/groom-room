@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div class="wrapper">
+  <div class="wrapper" id="app">
     <header class="header">
       <div class="header__container">
         <div class="header__logo"><span>GROOMING</span>Service for dogs and cats</div>
@@ -34,9 +34,9 @@
               <a href="" class="form__link active">Вход</a>
               <a href="" class="form__link">Регистрация</a>
             </div>
-            <input type="text" name="" class="" placeholder="Текстовое поле">
-            <input type="text" name="" class="" placeholder="Текстовое поле">
-            <button>Записаться</button>
+            <input type="text" name="" class="" placeholder="Введите логин" v-bind:value="login" v-on:input="getLogin">
+            <input type="text" name="" class="" placeholder="Введите пароль" v-bind:value="password" v-on:input="getPassword">
+            <button  v-on:click="auth">Войти</button>
           </div>
         </div>
       </section>
