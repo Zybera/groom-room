@@ -17,7 +17,9 @@
       <div class="header__logo"><span>GROOMING</span>Service for dogs and cats</div>
         <nav class="header__menu">
           <a href="/" class="header__link icon-home active"><span>ГЛАВНАЯ</span></a>
-          <a href="auth" class="header__link icon-key"><span>ВХОД</span></a>
+          <a href="auth" class="header__link icon-key linkIn"><span>ВХОД</span></a>
+          <a href="applications" class="header__link icon-profile linkProfile" style="display: none;"><span>КАБИНЕТ</span></a>
+          <a href="#" class="header__link icon-key linkOut" v-on:click="out" style="display: none;"><span>ВЫХОД</span></a>
         </nav>
       </div>
     </header>

@@ -10,6 +10,9 @@ switch($type) {
   case "REGISTR_USER":
     echo json_encode(register($conn, $_POST['login'], $_POST['password']));
     break;
+  case "CHECK_USER":
+    echo json_encode(check($conn, $_POST['login']));
+    break;
   default:
     echo 'eror';
     break;
@@ -40,6 +43,20 @@ function authorization($conn, $login, $password) {
     return "login and password are correct!";
   } else {
     return 'Invalid data';
+  }
+}
+
+function check($conn, $login){
+  $users =  mysqli_query($conn, "SELECT * FROM `users`");
+  $vars = [];
+  while ($var = mysqli_fetch_assoc($users)) {
+    array_push($vars, [$var['login'], $var['role']]);
+  }
+  for ($i=0; $i < count($vars); $i++) {
+    if ($login === $vars[$i][0]) {
+      return $vars[$i][1];
+      break;
+    }
   }
 }
 ?>
