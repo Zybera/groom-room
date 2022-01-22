@@ -9,23 +9,27 @@ const app = new Vue({
   },
   methods: {
     add: function () {
-      if (this.name !== "" && this.category !== "") {
-        var data = { type: "ADD_APPLICATIONS", name: this.name, category: this.category };
-        var fd = new FormData();
-        for (var i in data) {
-          fd.append(i, data[i]);
-        }
-        fetch("http://groom-room/utils/Applications.php", {
-          method: "POST",
-          body: fd,
-        })
-          .then((response) => {
-            return response.json();
+      if (!sessionStorage.login) {
+        window.location.href = "/auth";
+      }else {
+          if (this.name !== "" && this.category !== "") {
+          var data = { type: "ADD_APPLICATIONS", name: this.name, category: this.category };
+          var fd = new FormData();
+          for (var i in data) {
+            fd.append(i, data[i]);
+          }
+          fetch("http://groom-room/utils/Applications.php", {
+            method: "POST",
+            body: fd,
           })
-          .then(() => {
-            this.getApplications();
-            this.apps = [];
-          });
+            .then((response) => {
+              return response.json();
+            })
+            .then(() => {
+              this.getApplications();
+              this.apps = [];
+            });
+        }
       }
     },
     getName: function (event) {
@@ -54,7 +58,8 @@ const app = new Vue({
           .then((response) => response.json())
           .then((data) => {
             if (data !== 'Invalid data') {
-              window.location.href = "/";
+              window.sessionStorage.setItem('login', this.login);
+              window.location.href = "/applications";
             }
           });
       }
@@ -94,8 +99,41 @@ const app = new Vue({
       btn[0].style.display = 'block';
       btn[1].style.display = 'none';
     },
+    out: function() {
+      sessionStorage.removeItem('login');
+      window.location.href = "/";
+    },
+    check: function () {
+      var data = { type: "CHECK_USER", login: sessionStorage.login };
+      var fd = new FormData();
+      for (var i in data) {
+        fd.append(i, data[i]);
+      }
+      fetch("http://groom-room/utils/User.php", {
+        method: "POST",
+        body: fd,
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          if (sessionStorage.login && window.location.href == 'http://groom-room/') {
+            const linkIn = document.querySelector('.linkIn');
+            linkIn.style.display = 'none';
+            const linkProfile = document.querySelector('.linkProfile');
+            linkProfile.style.display = 'inline-block';
+            const linkOut = document.querySelector('.linkOut');
+            linkOut.style.display = 'inline-block';
+          }
+          if (sessionStorage.login && window.location.href == 'http://groom-room/applications') {
+            const linkOut = document.querySelector('.linkOut');
+            linkOut.style.display = 'inline-block';
+          }
+        });
+    },
   },
   beforeMount() {
+    this.check();
     this.getApplications();
   },
 })
