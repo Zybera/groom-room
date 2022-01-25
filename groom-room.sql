@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 22 2022 г., 10:15
+-- Время создания: Янв 25 2022 г., 21:51
 -- Версия сервера: 10.5.11-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -42,7 +42,7 @@ CREATE TABLE `applications` (
 --
 
 INSERT INTO `applications` (`id`, `name`, `img-before`, `img-after`, `timestamp`, `category`, `status`) VALUES
-(33, 'Мася', 'public/img/dog.png', '1', '2022-01-22', 'Стрижка', '');
+(55, 'Пук', 'public/img/dog.png', 'public/img/dogAfter.png', '2022-01-25', 'Педикюр', 'Обработка');
 
 -- --------------------------------------------------------
 
@@ -62,7 +62,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`login`, `password`, `role`) VALUES
 ('login', 'password', 'admin'),
-('qwe', 'qwe', 'guest');
+('qwe', 'qwe', 'guest'),
+('ss', 'ss', 'admin');
 
 --
 -- Индексы сохранённых таблиц
@@ -88,7 +89,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
