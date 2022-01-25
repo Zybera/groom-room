@@ -46,9 +46,11 @@
           <div class="our-works__gallery">
             <div class="our-works__card card" v-for="app in apps">
               <div class="card__img">
-                <img :src="app.img" alt="dog">
+                <img :src="app.img" alt="dog" class="hover-img-before">
+                <div class="ss"></div>
+                <img :src="app.imgAfter" alt="dogs" class="hover-img-after">
               </div>
-              <div class="card__name">{{app.name}} {{app.category}} {{app.status}}</div>
+              <div class="card__name">{{app.category}}</div>
             </div>
           </div>
         </div>

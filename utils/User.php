@@ -20,7 +20,7 @@ switch($type) {
 function register($conn, $login, $password) {
   $sql = "INSERT INTO `users` (`login`, `password`, `role`) VALUES ('$login', '$password', 'guest')";
   if ($conn->query($sql) === TRUE) {
-    return "New user created successfully";
+    return "guest";
   } else {
     return 'Invalid data';
   }
@@ -30,20 +30,15 @@ function authorization($conn, $login, $password) {
   $users =  mysqli_query($conn, "SELECT * FROM `users`");
   $vars = [];
   while ($var = mysqli_fetch_assoc($users)) {
-    array_push($vars, [$var['login'], $var['password']]);
+    array_push($vars, [$var['login'], $var['password'], $var['role']]);
   }
   $result = '';
   for ($i=0; $i < count($vars); $i++) {
     if ($login === $vars[$i][0] && $password === $vars[$i][1]) {
-      $result = 'succses';
-      break;
+      return $vars[$i][2];
     }
   }
-  if ($result === 'succses') {
-    return "login and password are correct!";
-  } else {
-    return 'Invalid data';
-  }
+  return 'Invalid data';
 }
 
 function check($conn, $login){

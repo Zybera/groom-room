@@ -9,6 +9,9 @@ switch($type) {
   case "ADD_APPLICATIONS":
     echo json_encode(addApplication($conn, $_POST['name'], $_POST['category']));
     break;
+  case "REMOVE_APPLICATIONS":
+    echo json_encode(removeApplicationById($conn, $_POST['id']));
+    break;
   default:
     echo 'eror';
     break;
@@ -16,7 +19,7 @@ switch($type) {
 
 function addApplication($conn, $name, $category) {
   $date = date('Y-m-d');
-  $sql = "INSERT INTO `applications` (`id`, `name`, `img-before`, `img-after`, `timestamp`, `category`, `status`) VALUES (NULL, '$name', 'public/img/dog.png', '1', '$date', '$category', 'new')";
+  $sql = "INSERT INTO `applications` (`id`, `name`, `img-before`, `img-after`, `timestamp`, `category`, `status`) VALUES (NULL, '$name', 'public/img/dog.png', 'public/img/dogAfter.png', '$date', '$category', 'Обработка')";
   if ($conn->query($sql) === TRUE) {
     $applications =  mysqli_query($conn, "SELECT * FROM `applications` where `name` = '$name'");
     $vars = [];
@@ -33,7 +36,7 @@ function getAllApplications($conn) {
   $applications =  mysqli_query($conn, "SELECT * FROM `applications`");
   $vars = [];
   while ($var = mysqli_fetch_assoc($applications)) {
-    array_push($vars, array('id' => $var['id'], 'img' => $var['img-before'],'name' => $var['name'],'category' => $var['category'],'status' => $var['status'],'timestamp' => $var['timestamp']));
+    array_push($vars, array('id' => $var['id'], 'img' => $var['img-before'],'imgAfter' => $var['img-after'],'name' => $var['name'],'category' => $var['category'],'status' => $var['status'],'timestamp' => $var['timestamp']));
   }
   return $vars;
 }
@@ -54,12 +57,12 @@ function getApplicationsById($conn, $id) {
   }
 }
 
-function removeApplicationByName($conn, $name) {
-  $sql = "DELETE FROM `applications` WHERE `applications`.`name` = '$name'";
+function removeApplicationById($conn, $id) {
+  $sql = "DELETE FROM `applications` WHERE `applications`.`id` = '$id'";
   if ($conn->query($sql) === TRUE) {
-    echo "Application was remove successfull";
+    return "Application was remove successfull";
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    return"Error: " . $sql . "<br>" . $conn->error;
   }
 }
 

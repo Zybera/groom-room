@@ -30,10 +30,12 @@
             <div class="application__card card-application" v-for="app in apps">
               <div class="card-application__img">
                 <img :src="app.img" alt="dog">
+                <span>{{app.name}}</span>
               </div>
               <div class="card-application__info">
-                <div class="card-application__title">Заявка №{{app.id}}</div>
-                <div class="card-application__text">{{app.name}} {{app.category}} {{app.status}}</div>
+                <div class="card-application__title"><span>Заявка №{{app.id}}</span><span>{{app.status}}</span></div>
+                <div class="card-application__text"> {{app.category}} </div>
+                <button V-if="isAdmin()" class="remove-btn" v-on:click="remove(app.id)">Удалить</button>
               </div>
             </div>
           </div>

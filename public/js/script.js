@@ -11,8 +11,8 @@ const app = new Vue({
     add: function () {
       if (!sessionStorage.login) {
         window.location.href = "/auth";
-      }else {
-          if (this.name !== "" && this.category !== "") {
+      } else {
+        if (this.name !== "" && this.category !== "") {
           var data = { type: "ADD_APPLICATIONS", name: this.name, category: this.category };
           var fd = new FormData();
           for (var i in data) {
@@ -59,6 +59,7 @@ const app = new Vue({
           .then((data) => {
             if (data !== 'Invalid data') {
               window.sessionStorage.setItem('login', this.login);
+              window.sessionStorage.setItem('role', data);
               window.location.href = "/applications";
             }
           });
@@ -99,8 +100,9 @@ const app = new Vue({
       btn[0].style.display = 'block';
       btn[1].style.display = 'none';
     },
-    out: function() {
+    out: function () {
       sessionStorage.removeItem('login');
+      sessionStorage.removeItem('role');
       window.location.href = "/";
     },
     check: function () {
@@ -131,10 +133,34 @@ const app = new Vue({
           }
         });
     },
+    remove: function (id) {
+      var data = { type: "REMOVE_APPLICATIONS", id: id };
+      var fd = new FormData();
+      for (var i in data) {
+        fd.append(i, data[i]);
+      }
+      fetch("http://groom-room/utils/Applications.php", {
+        method: "POST",
+        body: fd,
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          this.apps = [];
+          this.getApplications();
+        });
+    },
+    isAdmin: function () {
+      if (sessionStorage.role == "admin") {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
   beforeMount() {
     this.check();
     this.getApplications();
   },
 })
-
