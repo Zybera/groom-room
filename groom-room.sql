@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 19 2022 г., 21:40
+-- Время создания: Янв 22 2022 г., 10:15
 -- Версия сервера: 10.5.11-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -42,11 +42,7 @@ CREATE TABLE `applications` (
 --
 
 INSERT INTO `applications` (`id`, `name`, `img-before`, `img-after`, `timestamp`, `category`, `status`) VALUES
-(1, 'зузик', 'public/img/dog.png', 'нет', 'сейчас', 'мыть', 'грязный'),
-(3, 'пуся', 'public/img/dog.png', '1', '2022-01-18', 'мыть', 'old'),
-(29, '12', 'public/img/dog.png', '1', '2022-01-19', 'Мытье', 'new'),
-(30, '12', 'public/img/dog.png', '1', '2022-01-19', 'Педикюр', 'new'),
-(31, '12', 'public/img/dog.png', '1', '2022-01-19', 'Стрижка', 'new');
+(33, 'Мася', 'public/img/dog.png', '1', '2022-01-22', 'Стрижка', '');
 
 -- --------------------------------------------------------
 
@@ -92,7 +88,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
